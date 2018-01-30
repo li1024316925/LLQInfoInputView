@@ -46,7 +46,7 @@ typedef enum : NSUInteger {
 } LLQInputKeyboardType;
 ```
 
-![展示](https://github.com/li1024316925/LLQInfoInputView/Image/inputview.gif)
+![展示](https://github.com/li1024316925/LLQInfoInputView/blob/master/Image/inputview.gif)
 
 
 
