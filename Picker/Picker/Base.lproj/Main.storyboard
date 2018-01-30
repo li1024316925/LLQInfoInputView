@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="z4l-Vb-1YH">
+                                <rect key="frame" x="20" y="120" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <tableView clipsSubviews="YES" tag="20001" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vQ9-gK-OBN">
+                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="cBb-J3-7Lf"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="AqV-GN-rs3"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VJl-G3-z16">
+                                <rect key="frame" x="164" y="82" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="chengeKeyBoardType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ug3-OP-F52"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="z4l-Vb-1YH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Kuh-Ey-dyP"/>
+                            <constraint firstItem="vQ9-gK-OBN" firstAttribute="top" secondItem="z4l-Vb-1YH" secondAttribute="bottom" constant="50" id="P09-47-x1P"/>
+                            <constraint firstItem="z4l-Vb-1YH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="Sla-Gu-ryi"/>
+                            <constraint firstItem="vQ9-gK-OBN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="TsC-hd-DMo"/>
+                            <constraint firstAttribute="trailing" secondItem="z4l-Vb-1YH" secondAttribute="trailing" constant="20" id="hvc-qW-eOh"/>
+                            <constraint firstItem="z4l-Vb-1YH" firstAttribute="top" secondItem="VJl-G3-z16" secondAttribute="bottom" constant="8" id="jVC-tR-jDU"/>
+                            <constraint firstAttribute="trailing" secondItem="vQ9-gK-OBN" secondAttribute="trailing" id="lS8-B1-4il"/>
+                            <constraint firstItem="z4l-Vb-1YH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="o7J-6m-hd5"/>
+                            <constraint firstItem="VJl-G3-z16" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pkQ-zF-w4w"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vQ9-gK-OBN" secondAttribute="bottom" id="vfM-kI-Dxo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mainTableView" destination="vQ9-gK-OBN" id="8la-BF-w0C"/>
+                        <outlet property="textField" destination="z4l-Vb-1YH" id="Mzs-R0-ZJg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
