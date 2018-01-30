@@ -43,10 +43,11 @@
         LLQInfoInputView *llqInputView = [[LLQInfoInputView alloc] initWithFrame:CGRectMake(20, (i*30)+i*10+10, (UIScreen.mainScreen.bounds.size.width)-40, 30)];
         llqInputView.keyboardType = [[dic objectForKey:dic.allKeys[0]] integerValue];
         llqInputView.placeholder = dic.allKeys[0];
-        llqInputView.endEditing = ^(NSString *text) {
-            NSLog(@"%@",text);
+        llqInputView.endEditing = ^(NSString *text, NSString *alertStr) {
+            NSLog(@"%@ -- %@",text, alertStr);
         };
         llqInputView.showAccessory = YES;
+        llqInputView.isCheck = YES;
         llqInputView.layer.borderWidth = 0.5;
         llqInputView.layer.borderColor = [UIColor blackColor].CGColor;
         [self.view addSubview:llqInputView];

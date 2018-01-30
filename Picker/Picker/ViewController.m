@@ -33,7 +33,7 @@
     llqInputView.keyboardType = LLQInputKeyboardTypeCity;
     llqInputView.content = @"12333";
     llqInputView.placeholder = @"身份证";
-    llqInputView.endEditing = ^(NSString *text) {
+    llqInputView.endEditing = ^(NSString *text, NSString *alertStr) {
         NSLog(@"%@",text);
     };
     llqInputView.showAccessory = YES;

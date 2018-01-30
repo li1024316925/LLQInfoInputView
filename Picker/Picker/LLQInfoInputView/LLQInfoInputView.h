@@ -20,7 +20,7 @@ typedef enum : NSUInteger {
     LLQInputKeyboardTypeDate           //日期
 } LLQInputKeyboardType;
 
-typedef void(^EndEditing)(NSString *text);
+typedef void(^LLQEndEditingBlock)(NSString *text, NSString *alertStr);
 
 @interface LLQInfoInputView : UIView
 
@@ -48,11 +48,16 @@ typedef void(^EndEditing)(NSString *text);
 /**
  编辑结束时的回调
  */
-@property (nonatomic, copy) EndEditing endEditing;
+@property (nonatomic, copy) LLQEndEditingBlock endEditing;
 
 /**
  显示 accessory
  */
 @property (nonatomic, assign) BOOL showAccessory;
+
+/**
+ 检查文本正确性（仅身份证、手机号、电子邮件有效）
+ */
+@property (nonatomic, assign) BOOL isCheck;
 
 @end

@@ -35,6 +35,7 @@
         textField.borderStyle = UITextBorderStyleNone;
         self.inputTextField = textField;
         self.showAccessory = NO;
+        self.isCheck = NO;
         [self addSubview:self.inputTextField];
     }
     return self;
@@ -191,6 +192,7 @@
     return array;
 }
 
+
 #pragma mark ------ UITextFieldDelegate
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
@@ -216,7 +218,10 @@
         textField.text = dateStr;
     }
     if (self.endEditing) {
-        self.endEditing(textField.text);
+        NSString *alertStr = nil;
+        if (self.isCheck)
+            alertStr = [self checkText:textField.text];
+        self.endEditing(textField.text,alertStr);
     }
 }
 
@@ -268,6 +273,86 @@
         }
     }
     return YES;
+}
+
+
+#pragma mark ------ 校验
+
+- (NSString *)checkText:(NSString *)text {
+    NSString *alertStr = nil;
+    switch (self.keyboardType) {
+        case LLQInputKeyboardTypePhonePad:
+            alertStr = [self checkPhoneNumber:text]?nil:@"您输入的手机号不正确！";
+            break;
+            
+        case LLQInputKeyboardTypeIDCardNumber:
+            alertStr = [self checkIDCardNumber:text]?nil:@"您输入的身份证号不正确！";
+            break;
+            
+        case LLQInputKeyboardTypeEmailAddress:
+            alertStr = [self checkMail:text]?nil:@"您输入的邮箱不正确！";
+            break;
+            
+        default:
+            break;
+    }
+    return alertStr;
+}
+
+//校验身份证
+- (BOOL)checkIDCardNumber:(NSString *)IDCardNumber {
+    
+    if ([IDCardNumber isEqualToString:@""]) {
+        return YES;
+    }
+    NSString *regex = @"(^[1-9]\\d{5}(18|19|([23]\\d))\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{3}[0-9Xx]$)|(^[1-9]\\d{5}\\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\\d{2}[0-9Xx]$)";
+    NSRegularExpression *regu = [[NSRegularExpression alloc] initWithPattern:regex options:NSRegularExpressionCaseInsensitive error:nil];
+    NSUInteger index = [regu numberOfMatchesInString:IDCardNumber options:NSMatchingReportProgress range:NSMakeRange(0, IDCardNumber.length)];
+    if (index == 0) {
+        return NO;
+    }
+    else if (index == 1) {
+        return YES;
+    }
+    return NO;
+    
+}
+
+//校验手机号
+- (BOOL)checkPhoneNumber:(NSString *)phoneNum {
+    
+    if ([phoneNum isEqualToString:@""]) {
+        return YES;
+    }
+    NSString *regex = @"^134[0-8]\\d{7}$|^13[^4]\\d{8}$|^14[5-9]\\d{8}$|^15[^4]\\d{8}$|^16[6]\\d{8}$|^17[0-8]\\d{8}$|^18[\\d]{9}$|^19[8,9]\\d{8}$";
+    NSRegularExpression *regu = [[NSRegularExpression alloc] initWithPattern:regex options:NSRegularExpressionCaseInsensitive error:nil];
+    NSUInteger index = [regu numberOfMatchesInString:phoneNum options:NSMatchingReportProgress range:NSMakeRange(0, phoneNum.length)];
+    if (index == 0) {
+        return NO;
+    }
+    else if (index == 1) {
+        return YES;
+    }
+    return NO;
+}
+
+//校验邮箱
+- (BOOL)checkMail:(NSString *)mail {
+    
+    if ([mail isEqualToString:@""]) {
+        return YES;
+    }
+    NSString *regex = @"^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\\.[a-zA-Z0-9_-]+)+$";
+    NSRegularExpression *regu = [[NSRegularExpression alloc] initWithPattern:regex options:NSRegularExpressionCaseInsensitive error:nil];
+    NSUInteger index = [regu numberOfMatchesInString:mail options:NSMatchingReportProgress range:NSMakeRange(0, mail.length)];
+    if (index == 0) {
+        return NO;
+    }
+    else if (index == 1) {
+        return YES;
+    }
+    return NO;
+    
 }
 
 

@@ -20,12 +20,16 @@ llqInputView.content = @"12333";
 llqInputView.placeholder = @"身份证";
 
 //输入结束时拿到字符串
-llqInputView.endEditing = ^(NSString *text) {
-    NSLog(@"%@",text);
+llqInputView.endEditing = ^(NSString *text, NSString *alertStr) {
+    NSLog(@"文本：%@",text);
+    NSLog(@"提示：%@",alertStr);
 };
 
 //设置显示辅助视图
 llqInputView.showAccessory = YES;
+
+//检查文本正确性（仅身份证、手机号、电子邮件有效）
+llqInputView.isCheck = YES;
 ```
 
 ## 输入类型
